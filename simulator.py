@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import math
 
-# sharpe = simulate(..)
 def simulate(ls_symbols, weights, dt_start, dt_end):
 	dt_timeofday = dt.timedelta(hours=16)
 	ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
@@ -48,10 +47,10 @@ def find_weights(ls_symbols):
 	max_weights = [0, 0, 0, 0]
 
 	# assuming number of symbols will be 4 for simplicity
-	for w1 in range(0, 1, .1):
-    	for w2 in range(0, 1, .1):
-        	for w3 in range(0, 1, .1):
-            	for w4 in range(0, 1, .1):
+	for w1 in np.arange(0, 1, .1):
+    	for w2 in np.arange(0, 1, .1):
+        	for w3 in np.arange(0, 1, .1):
+            	for w4 in np.arange(0, 1, .1):
             	if (w1 + w2 + w3 + w4 == 1):
    		 curr_weights = [w1, w2, w3, w4]
    		 curr = simulate(ls_symbols, curr_weights, dt_start, dt_end)
