@@ -11,8 +11,6 @@ import math
 # sharpe = simulate(..)
 def simulate(ls_symbols, weights, dt_start, dt_end):
 	dt_timeofday = dt.timedelta(hours=16)
-	dt_start = dt.datetime(2011, 1, 1)
-	dt_end = dt.datetime(2011, 12, 31)
 	ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
 
 	c_dataobj = da.DataAccess('Yahoo')
