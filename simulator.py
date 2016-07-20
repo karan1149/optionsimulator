@@ -57,4 +57,4 @@ def find_weights(ls_symbols):
    		 if (curr > max_sharpe):
    		 	max_sharpe = curr
    		 	max_weights = curr_weights
-	return max_weights
+	return max_weights, max_sharpe
