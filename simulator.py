@@ -6,7 +6,9 @@ import datetime as dt
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import math
 
+# vol, avg_ret, sharpe, cum_ret = simulate(..)
 def simulate(ls_symbols, weights):
 	dt_timeofday = dt.timedelta(hours=16)
 	dt_start = dt.datetime(2006, 1, 1)
@@ -26,8 +28,16 @@ def simulate(ls_symbols, weights):
 
 	# assume number of symbols == number of weights
 	for i in range(len(weights)):
-        weighted_price += weights[i] * prices[ : , i]
+    weighted_price += weights[i] * prices_norm[ : , i]
 
+	# get daily returns
 	daily_returns = weighted_price.copy()
 	tsu.returnize0(daily_returns)
-	return daily_returns
+
+	# get return parameters
+	avg_ret = daily_returns.mean()
+	vol = daily_returns.std()
+	sharpe = avg_ret / vol * math.sqrt(252) # 252 is the number of trading days
+	cum_ret = list(weighted_price)[len(list(weighted_price)) - 1] - 1
+
+	return vol, avg_ret, sharpe, cum_ret, weighted_price
