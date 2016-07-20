@@ -11,8 +11,8 @@ import math
 # vol, avg_ret, sharpe, cum_ret = simulate(..)
 def simulate(ls_symbols, weights):
 	dt_timeofday = dt.timedelta(hours=16)
-	dt_start = dt.datetime(2006, 1, 1)
-	dt_end = dt.datetime(2010, 12, 31)
+	dt_start = dt.datetime(2011, 1, 1)
+	dt_end = dt.datetime(2011, 12, 31)
 	ldt_timestamps = du.getNYSEdays(dt_start, dt_end, dt_timeofday)
 
 	c_dataobj = da.DataAccess('Yahoo')
