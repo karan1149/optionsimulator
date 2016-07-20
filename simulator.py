@@ -39,3 +39,23 @@ def simulate(ls_symbols, weights, dt_start, dt_end):
 	cum_ret = list(weighted_price)[len(list(weighted_price)) - 1] - 1
 
 	return sharpe
+
+def find_weights(ls_symbols):
+	dt_start = dt.datetime(2011, 1, 1)
+	dt_end = dt.datetime(2011, 12, 31)
+
+	max_sharpe = 0
+	max_weights = [0, 0, 0, 0]
+
+	# assuming number of symbols will be 4 for simplicity
+	for w1 in range(0, 1, .1):
+    	for w2 in range(0, 1, .1):
+        	for w3 in range(0, 1, .1):
+            	for w4 in range(0, 1, .1):
+            	if (w1 + w2 + w3 + w4 == 1):
+   		 curr_weights = [w1, w2, w3, w4]
+   		 curr = simulate(ls_symbols, curr_weights, dt_start, dt_end)
+   		 if (curr > max_sharpe):
+   		 	max_sharpe = curr
+   		 	max_weights = curr_weights
+	return max_weights
