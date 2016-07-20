@@ -38,4 +38,4 @@ def simulate(ls_symbols, weights, dt_start, dt_end):
 	sharpe = avg_ret / vol * math.sqrt(252) # 252 is the number of trading days
 	cum_ret = list(weighted_price)[len(list(weighted_price)) - 1] - 1
 
-	return vol, avg_ret, sharpe, cum_ret, weighted_price
+	return sharpe
